@@ -144,3 +144,9 @@ class KP_Instance_Creator:
 
 def normalize(array_, index_sort):
     return (np.max(array_) - array_[index_sort]) / (np.max(array_) - np.min(array_))
+
+
+if __file__ == "__main__":
+    ic = KP_Instance_Creator("random")
+    ic.plot_data_scatter()
+    ic.plot_data_distribution()
