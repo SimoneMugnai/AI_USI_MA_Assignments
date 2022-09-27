@@ -24,7 +24,7 @@ class Solver_TSP:
 
     available_improvements = {"2-opt": TwoOpt.local_search,
                               "2.5-opt": TwoDotFiveOpt.local_search,
-                              "2-opt_cl": twoOpt_with_cl
+                              # "2-opt_cl": twoOpt_with_cl
                               }
 
     def __init__(self, initializer, seed_=0, stop_run_after=180):
