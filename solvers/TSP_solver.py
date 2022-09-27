@@ -8,8 +8,8 @@ if 'AI' in os.getcwd():
     from solvers.local_search import *
     from solvers.two_opt_with_candidate import twoOpt_with_cl
 else:
-    from AI2021MA.solvers.constructive_algorithms import *
-    from AI2021MA.solvers.local_search import *
+    from AI2022MA.solvers.constructive_algorithms import *
+    from AI2022MA.solvers.local_search import *
 
 
 class Solver_TSP:
