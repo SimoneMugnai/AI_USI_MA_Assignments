@@ -36,7 +36,7 @@ class TSP_Instance_Creator:
         # read raw data
         folder = "problems/TSP/"
         if "AI" not in os.getcwd():
-            folder = "AI2021MA/problems/TSP/"
+            folder = "AI2022MA/problems/TSP/"
         file_object = open(f"{folder}{name_tsp}")
         data = file_object.read()
         file_object.close()
