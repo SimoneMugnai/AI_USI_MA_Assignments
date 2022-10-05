@@ -1,6 +1,8 @@
 import os
 import numpy as np
 from numpy.core._multiarray_umath import ndarray
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 
@@ -16,6 +18,8 @@ distributions = ["uncorrelated",
                  "circle"]
 
 
+# Creating a Knapsack problem instance.
+# Creating a Knapsack problem instance.
 class KP_Instance_Creator:
     nItems: int
     distribution: str
@@ -25,6 +29,13 @@ class KP_Instance_Creator:
     existing_distributions = distributions
 
     def __init__(self, mode, seed=1, dimension=50):
+        """
+        The constructor of the class.
+
+        :param mode: This is the mode of the model. It can be either 'train' or 'test'
+        :param seed: The random seed used to initialize the random number generator, defaults to 1 (optional)
+        :param dimension: The dimension of the embedding space, defaults to 50 (optional)
+        """
         print(mode)
         self.seed_ = seed
         np.random.seed(self.seed_)
@@ -36,10 +47,17 @@ class KP_Instance_Creator:
         self.distribution = mode
 
     def read_data(self, name_type):
+        """
+        This function reads in the data from the file and returns a list of lists.
+
+        :param name_type: The name of the data type you want to read
+        """
         assert name_type in self.existing_distributions, f"the distribution {name_type} does not exits"
         folder = "problems/KP/"
+
         if "AI" not in os.getcwd():
             folder = "AI2022MA/problems/KP/"
+
         files_distr = [file_ for file_ in os.listdir(folder) if name_type in file_]
         # print(files_distr)
         file_object = np.random.choice(files_distr, 1)[0]
@@ -87,6 +105,11 @@ class KP_Instance_Creator:
             self.volume_items = new_volume
 
     def my_random(self, dimension=50):
+        """
+        It generates a random number between 0 and 1.
+
+        :param dimension: The number of dimensions of the vector space, defaults to 50 (optional)
+        """
         mean = [300, 400]
         cov = [[8, 100], [100, 13]]
         features, true_labels = make_blobs(n_samples=dimension,
@@ -101,6 +124,9 @@ class KP_Instance_Creator:
         self.capacity = int(np.mean(self.volume_items) * num_items_prob)
 
     def plot_data_scatter(self):
+        """
+        This function plots the data points in the scatter plot.
+        """
         plt.figure(figsize=(8, 8))
         plt.title(self.distribution)
         plt.scatter(self.profit_items, self.volume_items)
@@ -112,6 +138,10 @@ class KP_Instance_Creator:
         plt.show()
 
     def plot_data_distribution(self):
+        """
+        It plots the cumulative distribution of the volume and profit of the items,
+        and shows the percentage of the volume that can be collected with the given capacity
+        """
         greedy_sort_vol = np.argsort(self.volume_items)
         greedy_sort_profits = np.argsort(self.profit_items)
         volume_plot = normalize(self.volume_items, index_sort=greedy_sort_vol)
@@ -130,8 +160,15 @@ class KP_Instance_Creator:
         plt.plot(np.linspace(0, 1, 10), np.ones(10) * capacity_plot, color='orange')
         plt.legend()
         plt.show()
+        print()
 
     def plot_solution(self, solution):
+        """
+        It plots the solution to the problem
+
+        :param solution: a list of lists, where each list is a list of the indices of the nodes in the order they are
+        visited
+        """
         plt.figure(figsize=(8, 8))
         plt.title(self.distribution)
         plt.scatter(self.profit_items, self.volume_items)
@@ -143,10 +180,17 @@ class KP_Instance_Creator:
 
 
 def normalize(array_, index_sort):
+    """
+    It takes an array and an index, and returns the array sorted by the index
+
+    :param array_: the array to be normalized
+    :param index_sort: the index of the column to sort by
+    """
     return (np.max(array_) - array_[index_sort]) / (np.max(array_) - np.min(array_))
 
 
-if __file__ == "__main__":
-    ic = KP_Instance_Creator("random")
+if __name__ == '__main__':
+    ic = KP_Instance_Creator("random", dimension=300)
     ic.plot_data_scatter()
     ic.plot_data_distribution()
+    print()
