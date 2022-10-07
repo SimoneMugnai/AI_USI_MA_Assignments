@@ -145,11 +145,11 @@ class KP_Instance_Creator:
         volume_plot = normalize(self.volume_items, index_sort=greedy_sort)
         profit_plot = normalize(self.profit_items, index_sort=greedy_sort)
         cum_volume = np.cumsum(self.volume_items[greedy_sort])
-        print(volume_plot)
-        print(profit_plot)
-        print(self.capacity, cum_volume)
+        # print(volume_plot)
+        # print(profit_plot)
+        # print(self.capacity, cum_volume)
         arg_where = np.where(cum_volume >= self.capacity)[0][0]
-        print(arg_where)
+        # print(arg_where)
         capacity_plot = arg_where / len(self.volume_items)
         # print(f"collected {capacity_plot * 100}% of the volume")
         plt.hist(volume_plot, 50, density=True, histtype='step',
