@@ -113,7 +113,7 @@ class KP_Instance_Creator:
         features, true_labels = make_blobs(n_samples=dimension,
                                            centers=3,
                                            cluster_std=1.75,
-                                           random_state=42)
+                                           random_state=43)
         max_value = np.max(np.abs(features)) + 0.1
         self.volume_items, self.profit_items = np.round(np.array(features[:, 0] + max_value)), \
                                                np.round(np.array(features[:, 1] + max_value))
