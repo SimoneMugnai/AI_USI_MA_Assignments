@@ -139,15 +139,16 @@ class KP_Instance_Creator:
         It plots the cumulative distribution of the volume and profit of the items,
         and shows the percentage of the volume that can be collected with the given capacity
         """
-        greedy_sort_vol = np.argsort(self.volume_items)[::-1]
+        preferability = self.profit_items/self.volume_items
+        greedy_sort = np.argsort()preferability
         # greedy_sort_profits = np.argsort(self.profit_items)
-        volume_plot = normalize(self.volume_items, index_sort=greedy_sort_vol)
-        profit_plot = normalize(self.profit_items, index_sort=greedy_sort_vol)
-        cum_volume = np.cumsum(self.volume_items[greedy_sort_vol])
+        volume_plot = normalize(self.volume_items, index_sort=greedy_sort)
+        profit_plot = normalize(self.profit_items, index_sort=greedy_sort)
+        cum_volume = np.cumsum(self.volume_items[greedy_sort])
         print(volume_plot)
         print(profit_plot)
         print(self.capacity, cum_volume)
-        arg_where = np.where(cum_volume >= self.capacity)[0]
+        arg_where = np.where(cum_volume >= self.capacity)[0][0]
         print(arg_where)
         capacity_plot = arg_where / len(self.volume_items)
         # print(f"collected {capacity_plot * 100}% of the volume")
