@@ -17,7 +17,6 @@ distributions = ["uncorrelated",
 
 
 # Creating a Knapsack problem instance.
-# Creating a Knapsack problem instance.
 class KP_Instance_Creator:
     nItems: int
     distribution: str
@@ -141,12 +140,12 @@ class KP_Instance_Creator:
         and shows the percentage of the volume that can be collected with the given capacity
         """
         greedy_sort_vol = np.argsort(self.volume_items)
-        greedy_sort_profits = np.argsort(self.profit_items)
+        # greedy_sort_profits = np.argsort(self.profit_items)
         volume_plot = normalize(self.volume_items, index_sort=greedy_sort_vol)
-        profit_plot = normalize(self.profit_items, index_sort=greedy_sort_profits)
+        profit_plot = normalize(self.profit_items, index_sort=greedy_sort_vol)
         cum_volume = np.cumsum(volume_plot)
         # print(self.capacity, cum_volume)
-        arg_where = np.where(cum_volume >= self.capacity)[0][0]
+        arg_where = np.where(cum_volume >= self.capacity)[0]
         capacity_plot = arg_where / len(self.volume_items)
         # print(f"collected {capacity_plot * 100}% of the volume")
         print(volume_plot)
