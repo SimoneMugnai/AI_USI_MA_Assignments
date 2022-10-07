@@ -143,7 +143,7 @@ class KP_Instance_Creator:
         # greedy_sort_profits = np.argsort(self.profit_items)
         volume_plot = normalize(self.volume_items, index_sort=greedy_sort_vol)
         profit_plot = normalize(self.profit_items, index_sort=greedy_sort_vol)
-        cum_volume = np.cumsum(volume_plot)
+        cum_volume = np.cumsum(self.volume_items[greedy_sort_vol])
         print(volume_plot)
         print(profit_plot)
         print(self.capacity, cum_volume)
