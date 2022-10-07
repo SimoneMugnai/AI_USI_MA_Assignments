@@ -1,8 +1,6 @@
 import os
 import numpy as np
 from numpy.core._multiarray_umath import ndarray
-import matplotlib
-matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 
