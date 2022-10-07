@@ -146,7 +146,7 @@ class KP_Instance_Creator:
         cum_volume = np.cumsum(volume_plot)
         print(volume_plot)
         print(profit_plot)
-        # print(self.capacity, cum_volume)
+        print(self.capacity, cum_volume)
         arg_where = np.where(cum_volume >= self.capacity)[0]
         print(arg_where)
         capacity_plot = arg_where / len(self.volume_items)
