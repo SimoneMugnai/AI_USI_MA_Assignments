@@ -140,7 +140,7 @@ class KP_Instance_Creator:
         and shows the percentage of the volume that can be collected with the given capacity
         """
         preferability = self.profit_items/self.volume_items
-        greedy_sort = np.argsort()preferability
+        greedy_sort = np.argsort(preferability)
         # greedy_sort_profits = np.argsort(self.profit_items)
         volume_plot = normalize(self.volume_items, index_sort=greedy_sort)
         profit_plot = normalize(self.profit_items, index_sort=greedy_sort)
