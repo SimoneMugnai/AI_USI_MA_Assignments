@@ -17,6 +17,7 @@ distributions = ["uncorrelated",
 
 
 # Creating a Knapsack problem instance.
+# > This class creates a new instance of the Knapsack Problem
 class KP_Instance_Creator:
     nItems: int
     distribution: str
@@ -33,7 +34,7 @@ class KP_Instance_Creator:
         :param seed: The random seed used to initialize the random number generator, defaults to 1 (optional)
         :param dimension: The dimension of the embedding space, defaults to 50 (optional)
         """
-        print(mode)
+        # print(mode)
         self.seed_ = seed
         np.random.seed(self.seed_)
         self.nItems = dimension
@@ -152,14 +153,14 @@ class KP_Instance_Creator:
         # print(arg_where)
         capacity_plot = arg_where / len(self.volume_items)
         # print(f"collected {capacity_plot * 100}% of the volume")
+        plt.figure(figsize=(8, 8))
         plt.hist(volume_plot, 50, density=True, histtype='step',
-                 cumulative=True, label='volume comulative', color='blue')
+                 cumulative=True, label='volume cumulative', color='blue')
         plt.hist(profit_plot, 50, density=True, histtype='step',
-                 cumulative=True, label='profit comulative', color='green')
+                 cumulative=True, label='profit cumulative', color='green')
         plt.plot(np.linspace(0, 1, 10), np.ones(10) * capacity_plot, color='orange')
         plt.legend()
         plt.show()
-        print()
 
     def plot_solution(self, solution):
         """
@@ -186,10 +187,3 @@ def normalize(array_, index_sort):
     :param index_sort: the index of the column to sort by
     """
     return (np.max(array_) - array_[index_sort]) / (np.max(array_) - np.min(array_))
-
-
-if __name__ == '__main__':
-    ic = KP_Instance_Creator("random", dimension=300)
-    ic.plot_data_scatter()
-    ic.plot_data_distribution()
-    print()
