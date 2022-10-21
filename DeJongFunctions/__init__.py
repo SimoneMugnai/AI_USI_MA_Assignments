@@ -93,7 +93,6 @@ class DeJong:
         :param dimension_in: The dimension of the function. If not specified, it will be set to the default value,
                              defaults to False (optional).
         """
-        self.decode = None
         assert isinstance(func_number, int), f'func_number needs to be an integer!!!'
         assert 6 > func_number > 0, 'func_number needs to be a number between 1 and 5'
         self.function_name, self.fun, min_, self.resolution_factor, self.dimension = self.funcs[func_number]
@@ -103,12 +102,12 @@ class DeJong:
         if dimension_in:
             self.dimension = dimension_in
 
-    @staticmethod
-    def decode_(x):
+    def decode_(self, x):
         """
+        The function takes in a string and returns the string.
 
         :param x: The input to the encoder.
-        :return:  The value of x.
+        :return:  The input x is being returned.
         """
         return x
 
@@ -129,7 +128,7 @@ class DeJong:
         for i in range(len(x_e)):
             pos = []
             for dim in range(self.dimension):
-                pos.append(self.decode_(x_e[i][dim]))
+                pos.append(self.decode(x_e[i][dim]))
             fitness_pop_list.append(self.fun(np.array(pos)))
         return np.array(fitness_pop_list)
 
@@ -141,7 +140,7 @@ class DeJong:
         :return:    The gray code of the number.
         """
         scale = int(1 / self.resolution_factor)
-        n = int(n_f * scale - self.range[0] * scale)
+        n = int(np.round(n_f * scale - self.range[0] * scale))
         val = n ^ n >> 1
         r_val = f"{val:>b}"
         pad = "0" * (self.num_bits - len(r_val))
