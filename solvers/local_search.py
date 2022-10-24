@@ -1,6 +1,5 @@
 import numpy as np
 
-
 class TwoOpt:
 
     @staticmethod
@@ -18,6 +17,7 @@ class TwoOpt:
                     # print(new_distance)
                     # print(tsp_sequence)
                     distance = new_distance
+                    return tsp_sequence, distance, 1
         return tsp_sequence, distance, uncrosses
 
     @staticmethod
@@ -40,7 +40,9 @@ class TwoOpt:
         new_tsp_sequence = np.copy(np.array(solution))
         uncross = 0
         while True:
+            # input()
             new_tsp_sequence, new_reward, uncr_ = TwoOpt.step2opt(new_tsp_sequence, matrix_dist, actual_len)
+            new_tsp_sequence = np.roll(new_tsp_sequence, np.random.randint(len(new_tsp_sequence)))
             uncross += uncr_
             if new_reward < actual_len:
                 actual_len = new_reward
@@ -132,7 +134,7 @@ class TwoDotFiveOpt:
                 return new_tsp_sequence, new_len, 1, True
 
 
-def compute_lenght(solution, dist_matrix):
+def compute_length(solution, dist_matrix):
     total_length = 0
     starting_node = solution[0]
     from_node = starting_node
@@ -141,3 +143,4 @@ def compute_lenght(solution, dist_matrix):
         from_node = node
     total_length += dist_matrix[from_node, starting_node]
     return total_length
+
