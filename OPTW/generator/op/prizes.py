@@ -2,8 +2,8 @@ import math
 import numpy as np
 import pandas as pd
 
-import AI2021MA.OPTW.op_utils.heuristics as h
-import AI2021MA.OPTW.op_utils.op as u
+import AI2022MA.OPTW.op_utils.heuristics as h
+import AI2022MA.OPTW.op_utils.op as u
 
 
 class PrizeGenerator:

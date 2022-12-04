@@ -4,8 +4,8 @@ import pandas as pd
 import random
 from os import path
 
-from AI2021MA.OPTW.generator.op.prizes import PrizeGenerator
-from AI2021MA.OPTW.generator.op.timewindows import TWGenerator
+from AI2022MA.OPTW.generator.op.prizes import PrizeGenerator
+from AI2022MA.OPTW.generator.op.timewindows import TWGenerator
 
 
 class InstanceGenerator:

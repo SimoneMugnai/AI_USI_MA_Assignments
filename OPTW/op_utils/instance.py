@@ -1,7 +1,7 @@
 import pandas as pd
 from pathlib import Path
 
-from AI2021MA.OPTW.generator.op.instances import InstanceGenerator
+from AI2022MA.OPTW.generator.op.instances import InstanceGenerator
 
 
 def make_instance(n_nodes, seed=None, save=False):
