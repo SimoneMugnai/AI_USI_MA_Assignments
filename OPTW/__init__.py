@@ -27,6 +27,7 @@ class Env:
             self.x, self.adj, self.instance_name = u_i.read_instance(x_path, adj_path)
             self.n_nodes = len(self.x)
             t_max = int(self.x[0, 6])
+            print(self.x.shape, self.adj.shape, self.instance_name, t_max, self.n_nodes)
             self.x[self.x[:, 3] > t_max - self.adj[np.arange(self.n_nodes), 0], 3] = \
                 t_max - self.adj[np.arange(self.n_nodes), 0]
             self.x[self.x[:, 4] > t_max - self.adj[np.arange(self.n_nodes), 0], 4] = \
