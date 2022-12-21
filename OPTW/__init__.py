@@ -27,7 +27,10 @@ class Env:
             self.x, self.adj, self.instance_name = u_i.read_instance(x_path, adj_path)
             self.n_nodes = len(self.x)
             t_max = int(self.x[0, 6])
-            self.x[self.x[:, 3:5] > t_max] = t_max
+            self.x[self.x[:, 3] > t_max - self.adj[np.arange(self.n_nodes), 0], 3] = \
+                t_max - self.adj[np.arange(self.n_nodes), 0]
+            self.x[self.x[:, 4] > t_max - self.adj[np.arange(self.n_nodes), 0], 4] = \
+                t_max - self.adj[np.arange(self.n_nodes), 0]
         else:
             assert n_nodes is not None, 'if no file is given, n_nodes is required'
             self.n_nodes = n_nodes
