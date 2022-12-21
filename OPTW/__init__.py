@@ -24,9 +24,9 @@ class Env:
             files_path = path.join(base_dir, "OPTW/instances")
             x_path = os.path.join(files_path, f"instances/instance{instance_number:04}.csv")
             adj_path = os.path.join(files_path, f"adjs/adj-instance{instance_number:04}.csv")
-            x_path[x_path[:, 3:5] > x_path[0, 6]] = x_path[0, 6]
             self.x, self.adj, self.instance_name = u_i.read_instance(x_path, adj_path)
             self.n_nodes = len(self.x)
+            self.x[self.x[:, 3:5] > self.x[0, 6]] = self.x[0, 6]
         else:
             assert n_nodes is not None, 'if no file is given, n_nodes is required'
             self.n_nodes = n_nodes
