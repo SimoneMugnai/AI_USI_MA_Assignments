@@ -29,9 +29,9 @@ class Env:
             t_max = int(self.x[0, 6])
             print(self.x.shape, self.adj.shape, self.instance_name, t_max, self.n_nodes)
             self.x[self.x[:, 3] > t_max - self.adj[np.arange(self.n_nodes), 0], 3] = \
-                t_max - self.adj[np.arange(self.n_nodes), 0]
+                t_max - self.adj[self.x[:, 3] > t_max - self.adj[np.arange(self.n_nodes), 0], 0]
             self.x[self.x[:, 4] > t_max - self.adj[np.arange(self.n_nodes), 0], 4] = \
-                t_max - self.adj[np.arange(self.n_nodes), 0]
+                t_max - self.adj[self.x[:, 4] > t_max - self.adj[np.arange(self.n_nodes), 0], 0]
         else:
             assert n_nodes is not None, 'if no file is given, n_nodes is required'
             self.n_nodes = n_nodes
