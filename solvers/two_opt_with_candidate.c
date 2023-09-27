@@ -8,7 +8,7 @@
             "solvers/two_opt_with_candidate.pyx"
         ]
     },
-    "module_name": "solvers.two_opt_with_candidate"
+    "module_name": "solvers.two_opt_with_candidate" ok
 }
 END: Cython Metadata */
 
