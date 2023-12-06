@@ -2,7 +2,7 @@ import math
 import numpy as np
 import pandas as pd
 
-from AI2022MA.OPTW.op_utils import op
+from AI_USI_MA.OPTW.op_utils import op
 
 
 class TWGenerator:

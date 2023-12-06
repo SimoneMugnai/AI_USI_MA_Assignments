@@ -3,8 +3,8 @@ import random
 import matplotlib.pyplot as plt
 import os
 from os import path
-import AI2022MA.OPTW.op_utils.op as u_o
-import AI2022MA.OPTW.op_utils.instance as u_i
+import AI_USI_MA.OPTW.op_utils.op as u_o
+import AI_USI_MA.OPTW.op_utils.instance as u_i
 
 
 class Env:
